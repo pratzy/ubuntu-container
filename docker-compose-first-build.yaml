@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  ubuntu-vs-1:
+    #image: ubuntu-vs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu-vs-1
+    hostname: ubuntu-vs-1
+    volumes:
+      - ./../..:/root/workspace
+    tty: true
+    ports:
+      - "12346:22"
+      - "5432:5432"
+      - "6379:6379"
+      - "55555:55555"
+    cap_add:
+        - SYS_PTRACE
+
+
+          #  ubuntu-vs-2:
+    #image: ubuntu-vs
+    #context: .
+    #dockerfile: Dockerfile
+    #container_name: ubuntu-vs-2
+    #hostname: ubuntu-vs-2
+    #volumes:
+    #  - ./..:/root/home
+    #tty: true
+    #ports:
+    # - "12347:22"
+    # - "55556:55555"
+    #cap_add:
+    #    - SYS_PTRACE
